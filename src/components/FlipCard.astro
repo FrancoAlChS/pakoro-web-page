@@ -1,0 +1,32 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  color: "orange" | "blue";
+}
+
+const { title, description, color } = Astro.props;
+---
+
+<div
+  class="perspective-[1000px] cursor-pointer min-h-[350px] group"
+  data-aos="zoom-in"
+>
+  <div
+    class="relative size-full text-center transition-transform duration-700 transform-3d rounded-[15px] group-hover:transform-[rotateY(180deg)]"
+  >
+    <div
+      class={`absolute size-full backface-hidden [-webkit-backface-visibility: hidden] rounded-[15px] p-10 flex flex-col justify-center items-center shadow-[0_10px_30px_rgba(0,0,0,0.08)] text-azul bg-white border-t-4 ${color === "orange" ? "border-naranja" : "border-azul"}`}
+    >
+      <slot name="front-icon" />
+      <h3 class="text-title text-xl">{title}</h3>
+    </div>
+    <div
+      class={`absolute size-full backface-hidden [-webkit-backface-visibility: hidden] rounded-[15px] p-10 flex flex-col justify-center items-center shadow-[0_10px_30px_rgba(0,0,0,0.08)] rotate-y-180 text-white ${color === "orange" ? "bg-azul" : "bg-naranja"}`}
+    >
+      <slot name="back-icon" class="w-10 h-10 mb-3.5 text-white" />
+      <h3>{title}</h3>
+      <p>{description}</p>
+    </div>
+  </div>
+</div>

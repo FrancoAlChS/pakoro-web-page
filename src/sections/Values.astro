@@ -1,0 +1,55 @@
+---
+import ValueCard from "../components/ValueCard.astro";
+import Clock from "../icons/Clock.astro";
+import Document from "../icons/Document.astro";
+import Handshake from "../icons/Handshake.astro";
+import Heart from "../icons/Heart.astro";
+import Lightbulb from "../icons/Lightbulb.astro";
+import "../styles/global.css";
+---
+
+<div class="app-container">
+  <h2 class="text-center mb-5 text-title text-2xl">Nuestros Valores</h2>
+  <p class="text-center text-texto mb-12 max-w-[600px] mx-auto">
+    Los pilares fundamentales que guían cada una de nuestras entregas.
+  </p>
+  <div class="grid grid-cols-4 gap-7 mt-12">
+    <ValueCard title="Confianza" description="Cumplimos lo que prometemos.">
+      <Handshake
+        slot="icon"
+        class="size-10 text-naranja mb-5 duration-[0.4s] group-hover:scale-[1.1]"
+      />
+    </ValueCard>
+
+    <ValueCard title="Puntualidad" description="Cada entrega es un compromiso.">
+      <Clock
+        slot="icon"
+        class="size-10 text-naranja mb-5 duration-[0.4s] group-hover:scale-[1.1]"
+      />
+    </ValueCard>
+
+    <ValueCard
+      title="Transparencia"
+      description="Claridad en tarifas y procesos."
+    >
+      <Document
+        slot="icon"
+        class="size-10 text-naranja mb-5 duration-[0.4s] group-hover:scale-[1.1]"
+      />
+    </ValueCard>
+
+    <ValueCard title="Cercanía" description="Atención personalizada y humana.">
+      <Heart
+        slot="icon"
+        class="size-10 text-naranja mb-5 duration-[0.4s] group-hover:scale-[1.1]"
+      />
+    </ValueCard>
+
+    <ValueCard title="Innovación" description="Buscamos mejorar cada día.">
+      <Lightbulb
+        slot="icon"
+        class="size-10 text-naranja mb-5 duration-[0.4s] group-hover:scale-[1.1]"
+      />
+    </ValueCard>
+  </div>
+</div>

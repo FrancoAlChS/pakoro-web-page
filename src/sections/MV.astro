@@ -1,0 +1,29 @@
+---
+import FlipCard from "../components/FlipCard.astro";
+import Eye from "../icons/Eye.astro";
+import Rocket from "../icons/Rocket.astro";
+---
+
+<section class="section bg-gris-claro">
+  <div class="app-container">
+    <div class="grid grid-cols-2 gap-7">
+      <FlipCard
+        title="Nuestra Misión"
+        description="Brindar a personas y empresas soluciones de envío simples, rápidas y seguras, respaldadas por procesos confiables y servicio cercano."
+        color="orange"
+      >
+        <Rocket slot="front-icon" class="w-16 h-16 mb-7 text-naranja" />
+        <Rocket slot="back-icon" class="w-10 h-10 mb-3.5 text-white" />
+      </FlipCard>
+
+      <FlipCard
+        title="Nuestra Visión"
+        description=" Consolidarnos como la paquetería peruana más confiable,destacando por la innovación y conectando al Perú con el mundo."
+        color="blue"
+      >
+        <Eye slot="front-icon" class="w-16 h-16 mb-7 text-naranja" />
+        <Eye slot="back-icon" class="w-10 h-10 mb-3.5 text-white" />
+      </FlipCard>
+    </div>
+  </div>
+</section>
