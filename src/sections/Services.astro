@@ -1,0 +1,61 @@
+---
+import ServiceCard from "../components/ServiceCard.astro";
+import Package from "../icons/Package.astro";
+import Phone from "../icons/Phone.astro";
+import Shooping from "../icons/Shooping.astro";
+import Store from "../icons/Store.astro";
+import Tachometer from "../icons/Tachometer.astro";
+import Truck from "../icons/Truck.astro";
+---
+
+<div class="app-container">
+  <div class="text-center" style="margin-bottom: 60px">
+    <span class="text-naranja font-semibold">LO QUE HACEMOS</span>
+    <h2 class="font-semibold text-white text-2xl">🛠 Nuestros Servicios</h2>
+  </div>
+  <div
+    class="grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-[30px] mt-[60px]"
+  >
+    <ServiceCard
+      title="Paquetería Lima & Callao"
+      description="Envío de paquetes, sobres y documentos en toda Lima Metropolitana y Callao con seguridad."
+    >
+      <Package class="size-12 text-naranja mb-7 inline-block" />
+    </ServiceCard>
+
+    <ServiceCard
+      title="Recojo a Domicilio"
+      description="Previa coordinación, recogemos tus envíos en la puerta de tu casa o negocio para tu comodidad."
+    >
+      <Truck class="size-12 text-naranja mb-7 inline-block" />
+    </ServiceCard>
+
+    <ServiceCard
+      title="Atención Emprendedores"
+      description="Recojo directo en stands de Gamarra, Centro de Lima y Mercados. Ahorra tiempo valioso."
+    >
+      <Store class="size-12 text-naranja mb-7 inline-block" />
+    </ServiceCard>
+
+    <ServiceCard
+      title="Entregas Rápidas"
+      description="Opciones de entrega flexibles: el mismo día o al día siguiente, según el destino."
+    >
+      <Tachometer class="size-12 text-naranja mb-7 inline-block" />
+    </ServiceCard>
+
+    <ServiceCard
+      title="App de Seguimiento"
+      description="Consulta en tiempo real el estado y ubicación de tu envío a través de nuestra web."
+    >
+      <Phone class="size-12 text-naranja mb-7 inline-block" />
+    </ServiceCard>
+
+    <ServiceCard
+      title="Soluciones E-commerce"
+      description="Logística eficiente diseñada a medida para tiendas online y negocios locales en crecimiento."
+    >
+      <Shooping class="size-12 text-naranja mb-7 inline-block" />
+    </ServiceCard>
+  </div>
+</div>
