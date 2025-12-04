@@ -1,0 +1,21 @@
+---
+interface Props {
+  title: string;
+  value: string;
+}
+
+const { title, value } = Astro.props;
+---
+
+<div class="flex items-center mb-5">
+  <span
+    class="size-[55px] bg-naranja flex justify-center items-center rounded-[15px] mr-5 contact-icon-animation"
+  >
+    <slot />
+  </span>
+
+  <div>
+    <strong>{title}</strong>
+    <br />{value}
+  </div>
+</div>

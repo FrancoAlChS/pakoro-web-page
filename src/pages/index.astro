@@ -1,6 +1,9 @@
 ---
 import Section from "../components/Section.astro";
 import About from "../sections/About.astro";
+import Contact from "../sections/Contact.astro";
+import Coverage from "../sections/Coverage.astro";
+import Footer from "../sections/Footer.astro";
 import Header from "../sections/Header.astro";
 import Hero from "../sections/Hero.astro";
 import MV from "../sections/MV.astro";
@@ -35,5 +38,15 @@ import "../styles/global.css";
     <Section class="services-section">
       <Services />
     </Section>
+
+    <Section class="section-padding bg-white">
+      <Coverage />
+    </Section>
+
+    <Section class="section-padding bg-[#f9f9f9] relative">
+      <Contact />
+    </Section>
+
+    <Footer />
   </body>
 </html>

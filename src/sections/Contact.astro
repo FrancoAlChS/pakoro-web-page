@@ -1,0 +1,84 @@
+---
+import ContactIcon from "../components/ContactIcon.astro";
+import Cellphone from "../icons/Cellphone.astro";
+import Facebook from "../icons/Facebook.astro";
+import Instagram from "../icons/Instagram.astro";
+import Linkedin from "../icons/Linkedin.astro";
+import Location from "../icons/Location.astro";
+import Mail from "../icons/Mail.astro";
+import WhatsApp from "../icons/WhatsApp.astro";
+---
+
+<div class="app-container">
+  <h2 class="text-center text-azul font-bold text-2xl mb-5">Contáctanos</h2>
+  <p class="text-texto text-center">
+    Queremos ser tu aliado logístico desde el primer envío.
+  </p>
+
+  <div class="contact-container">
+    <div class="flex-1 min-w-[300px] m-5" data-aos="fade-right">
+      <h3 class="mb-8 text-azul font-bold text-xl">Información Directa</h3>
+
+      <ContactIcon title="Llámanos:" value="+51 965 167 140">
+        <Cellphone class="size-6 text-white" />
+      </ContactIcon>
+
+      <ContactIcon title="Escríbenos al WhatsApp:" value="+51 965 167 140">
+        <WhatsApp class="size-6 text-white" />
+      </ContactIcon>
+
+      <ContactIcon
+        title="Correo Electrónico:"
+        value="servicios.pakoro@gmail.com"
+      >
+        <Mail class="size-6 text-white" />
+      </ContactIcon>
+
+      <ContactIcon title="Ubicación:" value="Lima, Perú">
+        <Location class="size-6 text-white" />
+      </ContactIcon>
+
+      <div class="mt-10 flex gap-5">
+        <Facebook class="size-6 text-azul" />
+        <Instagram class="size-6 text-azul" />
+        <Linkedin class="size-6 text-azul" />
+      </div>
+    </div>
+
+    <div class="flex-1 min-w-[300px] m-5" data-aos="fade-left">
+      <h3 class="mb-8 text-azul font-bold text-xl">Envíanos un mensaje</h3>
+      <form>
+        <input
+          type="text"
+          placeholder="Tu Nombre Completo"
+          required
+          class="w-full p-[18px] mb-[20px] border-2 border-[#eee] rounded-[12px] font-poppins bg-[#fcfcfc] transition duration-300 focus:border-naranja focus:outline-none focus:bg-white"
+        />
+        <input
+          type="email"
+          placeholder="Tu Correo Electrónico"
+          required
+          class="w-full p-[18px] mb-[20px] border-2 border-[#eee] rounded-[12px] font-poppins bg-[#fcfcfc] transition duration-300 focus:border-naranja focus:outline-none focus:bg-white"
+        />
+        <input
+          type="text"
+          placeholder="Asunto (Ej: Cotización)"
+          required
+          class="w-full p-[18px] mb-[20px] border-2 border-[#eee] rounded-[12px] font-poppins bg-[#fcfcfc] transition duration-300 focus:border-naranja focus:outline-none focus:bg-white"
+        />
+        <textarea
+          rows="5"
+          placeholder="¿Cómo podemos ayudarte con tus envíos?"
+          required
+          class="w-full p-[18px] mb-[20px] border-2 border-[#eee] rounded-[12px] font-poppins bg-[#fcfcfc] transition duration-300 focus:border-naranja focus:outline-none focus:bg-white"
+        ></textarea>
+        <button
+          type="submit"
+          class="btn btn-primary w-full border-none text-white"
+        >
+          Enviar Mensaje
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

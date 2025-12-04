@@ -1,0 +1,27 @@
+---
+import Map from "../icons/Map.astro";
+---
+
+<div class="app-container" data-aos="zoom-in">
+  <div
+    class="bg-white
+    p-12
+    rounded-3xl
+    text-center
+    shadow-[0_10px_30px_rgba(0,0,0,0.05)]
+    border-b-4 border-naranja"
+  >
+    <h2 class="text-center text-title text-2xl mb-5">Cobertura Actual</h2>
+    <p class="text-texto">
+      Operamos con total eficiencia en las siguientes zonas:
+    </p>
+    <ul class="list-none p-0 text-[1.3rem] my-[30px] inline-block text-left">
+      <li class="mb-4 flex items-center">
+        <Map class="mr-4 text-naranja size-6" /> Lima Metropolitana
+      </li>
+      <li class="mb-4 flex items-center">
+        <Map class="mr-4 text-naranja size-6" /> Provincia Constitucional del Callao
+      </li>
+    </ul>
+  </div>
+</div>
