@@ -6,9 +6,9 @@ import Coverage from "../sections/Coverage.astro";
 import Footer from "../sections/Footer.astro";
 import Header from "../sections/Header.astro";
 import Hero from "../sections/Hero.astro";
-import MV from "../sections/MV.astro";
 import Services from "../sections/Services.astro";
 import Values from "../sections/Values.astro";
+import MV from "../sections/MV.astro";
 import "../styles/global.css";
 import "aos/dist/aos.css";
 ---
@@ -28,25 +28,33 @@ import "aos/dist/aos.css";
   >
     <Header />
 
-    <Hero />
+    <Section
+      class="hero-image h-auto py-[120px] pb-[80px] md:h-[90vh] md:py-0 flex items-center text-left text-white rounded-none md:rounded-br-[100px]"
+    >
+      <Hero />
+    </Section>
 
-    <About />
+    <Section id="about">
+      <About />
+    </Section>
 
-    <MV />
+    <Section class="bg-gris-claro">
+      <MV />
+    </Section>
 
-    <Section>
+    <Section id="values">
       <Values />
     </Section>
 
-    <Section class="services-section">
+    <Section id="services" class="services-section">
       <Services />
     </Section>
 
-    <Section class="section-padding bg-white">
+    <Section id="coverage" class="section-padding bg-white">
       <Coverage />
     </Section>
 
-    <Section class="section-padding bg-[#f9f9f9] relative">
+    <Section id="contact" class="section-padding bg-[#f9f9f9] relative">
       <Contact />
     </Section>
 
