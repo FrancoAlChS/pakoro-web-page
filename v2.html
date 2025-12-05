@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PAKORO - Simple, Rápido y Seguro</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
+    <style>
+      /* --- VARIABLES DE COLOR --- */
+      :root {
+        --color-naranja: rgb(243, 133, 44);
+        --color-azul: rgb(20, 48, 85);
+        --color-azul-claro: rgba(20, 48, 85, 0.8);
+        --color-blanco: #ffffff;
+        --color-gris-claro: #f4f7f6;
+        --color-texto: #333333;
+      }
+
+      /* --- ESTILOS GENERALES --- */
+      body {
+        font-family: "Poppins", sans-serif;
+        margin: 0;
+        padding: 0;
+        color: var(--color-texto);
+        overflow-x: hidden;
+        line-height: 1.6;
+        background-color: #fff;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4 {
+        font-weight: 700;
+        color: var(--color-azul);
+        margin-top: 0;
+      }
+
+      p {
+        font-weight: 400;
+        font-size: 1rem;
+        margin-bottom: 1rem;
+        color: #555;
+      }
+
+      a {
+        text-decoration: none;
+        transition: 0.3s;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 25px;
+      }
+
+      .section-padding {
+        padding: 100px 0;
+      }
+      .text-center {
+        text-align: center;
+      }
+      .text-naranja {
+        color: var(--color-naranja);
+      }
+      .text-azul {
+        color: var(--color-azul);
+      }
+
+      /* --- BOTONES CON PULSO --- */
+      .btn {
+        display: inline-block;
+        padding: 14px 35px;
+        border-radius: 50px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-size: 0.9rem;
+      }
+
+      .btn-primary {
+        background-color: var(--color-naranja);
+        color: var(--color-blanco);
+        border: 2px solid var(--color-naranja);
+        box-shadow: 0 4px 15px rgba(243, 133, 44, 0.4);
+        animation: pulse-orange 2s infinite;
+      }
+
+      .btn-primary:hover {
+        background-color: transparent;
+        color: var(--color-naranja);
+        transform: translateY(-3px);
+      }
+
+      /* --- ANIMACIONES KEYFRAMES NUEVAS --- */
+      @keyframes pulse-orange {
+        0% {
+          box-shadow: 0 0 0 0 rgba(243, 133, 44, 0.7);
+        }
+        70% {
+          box-shadow: 0 0 0 15px rgba(243, 133, 44, 0);
+        }
+        100% {
+          box-shadow: 0 0 0 0 rgba(243, 133, 44, 0);
+        }
+      }
+
+      @keyframes icon-float {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-8px);
+        }
+      }
+
+      /* --- NAVBAR --- */
+      header {
+        background-color: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+      }
+
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 80px;
+      }
+
+      .logo img {
+        height: 50px;
+        width: auto;
+      }
+      .nav-links {
+        list-style: none;
+        display: flex;
+      }
+      .nav-links li {
+        margin-left: 35px;
+      }
+      .nav-links a {
+        color: var(--color-azul);
+        font-weight: 600;
+        font-size: 0.95rem;
+        position: relative;
+      }
+      /* Animación de subrayado en menú */
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: -5px;
+        left: 0;
+        background-color: var(--color-naranja);
+        transition: width 0.3s;
+      }
+      .nav-links a:hover::after {
+        width: 100%;
+      }
+
+      /* --- HERO SECTION --- */
+      .hero {
+        /* Imagen de camión de reparto moderno (Open Source) */
+        background: linear-gradient(
+            rgba(20, 48, 85, 0.85),
+            rgba(20, 48, 85, 0.65)
+          ),
+          url("https://images.unsplash.com/photo-1580674684081-7617fbf3d745?ixlib=rb-4.0.3&auto=format&fit=crop&w=1974&q=80");
+        background-size: cover;
+        background-position: center;
+        height: 90vh;
+        display: flex;
+        align-items: center;
+        text-align: left;
+        color: var(--color-blanco);
+        border-bottom-right-radius: 100px;
+      }
+
+      .hero-content h1 {
+        color: var(--color-blanco);
+        font-size: 4.5rem;
+        margin-bottom: 25px;
+        line-height: 1.1;
+        font-weight: 800;
+      }
+
+      .hero-content p {
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 1.3rem;
+        margin-bottom: 45px;
+        max-width: 600px;
+      }
+
+      /* --- QUIENES SOMOS --- */
+      .about-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        align-items: center;
+      }
+      .about-img {
+        position: relative;
+      }
+      .about-img img {
+        width: 100%;
+        border-radius: 20px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        /* Animación sutil al pasar el mouse sobre la imagen */
+        transition: transform 0.5s ease;
+      }
+      .about-img:hover img {
+        transform: scale(1.02);
+      }
+
+      /* --- MISION Y VISION (SE MANTIENE EL FLIP 3D) --- */
+      .mv-section {
+        background-color: var(--color-gris-claro);
+      }
+      .mv-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+      }
+      .mv-height {
+        min-height: 350px;
+      }
+
+      .flip-card {
+        perspective: 1000px;
+        cursor: pointer;
+      }
+      .flip-card-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        transition: transform 0.8s;
+        transform-style: preserve-3d;
+        border-radius: 15px;
+      }
+      .flip-card:hover .flip-card-inner {
+        transform: rotateY(180deg);
+      }
+      .flip-card-front,
+      .flip-card-back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        border-radius: 15px;
+        padding: 40px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      }
+      .flip-front-white {
+        background-color: var(--color-blanco);
+        color: var(--color-azul);
+      }
+      .flip-card-back {
+        transform: rotateY(180deg);
+        color: var(--color-blanco);
+      }
+      .flip-back-azul {
+        background-color: var(--color-azul);
+      }
+      .flip-back-naranja {
+        background-color: var(--color-naranja);
+      }
+      .flip-card i {
+        font-size: 4rem;
+        margin-bottom: 25px;
+        color: var(--color-naranja);
+      }
+      .flip-card-back i {
+        color: var(--color-blanco);
+        font-size: 2.5rem;
+        margin-bottom: 15px;
+      }
+      .keywords-flip {
+        margin-top: 20px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        opacity: 0.9;
+      }
+
+      /* --- VALORES (NUEVA ANIMACIÓN: HOVER LIFT) --- */
+      .values-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 30px;
+        margin-top: 50px;
+      }
+
+      .value-card {
+        background: var(--color-blanco);
+        padding: 35px 25px;
+        border-radius: 15px;
+        text-align: center;
+        border: 1px solid #eee;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        /* La magia de la nueva animación */
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      }
+
+      .value-card:hover {
+        transform: translateY(-15px); /* Se levanta */
+        border-color: var(--color-naranja);
+        box-shadow: 0 15px 30px rgba(243, 133, 44, 0.15); /* Sombra naranja suave */
+      }
+
+      .value-card i {
+        font-size: 2.5rem;
+        color: var(--color-naranja);
+        margin-bottom: 20px;
+        transition: 0.4s;
+      }
+      .value-card:hover i {
+        transform: scale(1.1);
+      }
+
+      /* --- SERVICIOS (NUEVA ANIMACIÓN: GLASS GLOW) --- */
+      .services-section {
+        background-color: var(--color-azul);
+        color: var(--color-blanco);
+        position: relative;
+        z-index: 1;
+        /* Fondo con patrón sutil */
+        background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      }
+
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        margin-top: 60px;
+      }
+
+      .service-card-glass {
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(15px);
+        border: 2px solid rgba(255, 255, 255, 0.1);
+        padding: 40px 30px;
+        border-radius: 20px;
+        transition: all 0.4s ease;
+      }
+
+      /* Animación hover para servicios */
+      .service-card-glass:hover {
+        border-color: var(--color-naranja);
+        background: rgba(243, 133, 44, 0.05); /* Sutil fondo naranja al pasar */
+        transform: translateY(-5px);
+      }
+
+      .service-card-glass i {
+        color: var(--color-naranja);
+        font-size: 3rem;
+        margin-bottom: 25px;
+        display: inline-block;
+      }
+      .service-card-glass:hover i {
+        animation: icon-float 1.5s ease-in-out infinite; /* El icono flota al pasar el mouse */
+      }
+
+      .service-card-glass h4 {
+        color: var(--color-blanco);
+        font-size: 1.3rem;
+        margin-bottom: 15px;
+      }
+      .service-card-glass p {
+        color: rgba(255, 255, 255, 0.8);
+      }
+
+      /* --- COBERTURA --- */
+      .coverage-box {
+        background-color: var(--color-blanco);
+        padding: 50px;
+        border-radius: 25px;
+        text-align: center;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        border-bottom: 4px solid var(--color-naranja);
+      }
+      .coverage-list {
+        list-style: none;
+        padding: 0;
+        font-size: 1.3rem;
+        margin: 30px 0;
+        display: inline-block;
+        text-align: left;
+      }
+      .coverage-list li {
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+      }
+      .coverage-list i {
+        color: var(--color-naranja);
+        margin-right: 15px;
+        font-size: 1.5rem;
+      }
+
+      /* --- CONTACTO --- */
+      .contact-section {
+        background-color: #f9f9f9;
+        position: relative;
+      }
+      .contact-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin-top: 50px;
+        background: var(--color-blanco);
+        padding: 50px;
+        border-radius: 25px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+      }
+      .contact-info,
+      .contact-form {
+        flex: 1;
+        min-width: 300px;
+        margin: 20px;
+      }
+
+      .contact-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 30px;
+      }
+      /* Animación de flotación constante para los iconos de contacto */
+      .contact-item i {
+        width: 55px;
+        height: 55px;
+        background: var(--color-naranja);
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 15px;
+        margin-right: 20px;
+        font-size: 1.4rem;
+        box-shadow: 0 5px 15px rgba(243, 133, 44, 0.3);
+        animation: icon-float 3s ease-in-out infinite;
+        animation-delay: calc(var(--i) * 0.2s); /* Retraso escalonado */
+      }
+
+      form input,
+      form textarea {
+        width: 100%;
+        padding: 18px;
+        margin-bottom: 20px;
+        border: 2px solid #eee;
+        border-radius: 12px;
+        font-family: "Poppins", sans-serif;
+        background-color: #fcfcfc;
+        transition: 0.3s;
+      }
+      form input:focus,
+      form textarea:focus {
+        border-color: var(--color-naranja);
+        outline: none;
+        background-color: #fff;
+      }
+      form button {
+        width: 100%;
+        border: none;
+        font-size: 1.1rem;
+      }
+
+      footer {
+        background-color: var(--color-azul);
+        color: white;
+        text-align: center;
+        padding: 50px 0;
+      }
+
+      /* --- RESPONSIVE --- */
+      @media (max-width: 768px) {
+        .nav-links {
+          display: none;
+        }
+        .hero {
+          height: auto;
+          padding: 150px 0 100px;
+          border-radius: 0;
+        }
+        .hero-content h1 {
+          font-size: 3rem;
+        }
+        .about-grid,
+        .mv-grid {
+          grid-template-columns: 1fr;
+          gap: 40px;
+        }
+        .mv-height {
+          min-height: 300px;
+        }
+        .flip-card-back {
+          padding: 25px;
+        }
+        .contact-container {
+          padding: 25px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <nav>
+          <div class="logo">
+            <img src="logo.png" alt="PAKORO Logo" />
+          </div>
+          <ul class="nav-links">
+            <li><a href="#hero">Inicio</a></li>
+            <li><a href="#about">Nosotros</a></li>
+            <li><a href="#services">Servicios</a></li>
+            <li><a href="#contact">Contacto</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <section id="hero" class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <h1 data-aos="fade-right" data-aos-duration="1200">
+            Rápido, Simple<br />
+            y Seguro.
+          </h1>
+          <p data-aos="fade-right" data-aos-delay="200">
+            Conectamos personas y negocios mediante entregas eficientes. Tu
+            aliado logístico de confianza en Lima y Callao.
+          </p>
+          <div data-aos="fade-up" data-aos-delay="400">
+            <a href="#contact" class="btn btn-primary">Cotizar mi Envío</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section-padding">
+      <div class="container">
+        <div class="about-grid">
+          <div data-aos="fade-right">
+            <span
+              class="text-naranja"
+              style="font-weight: 600; letter-spacing: 1px"
+              >NOSOTROS</span
+            >
+            <h2>Quiénes Somos</h2>
+            <p>
+              <strong>PAKORO</strong> es una empresa peruana especializada en
+              soluciones de envío y paquetería, dedicada a ofrecer un servicio
+              confiable, ágil y seguro para el transporte de paquetes, sobres y
+              documentos.
+            </p>
+            <p>
+              Con nuestro sello <strong>“Simple, Rápido y Seguro”</strong>,
+              trabajamos para conectar personas y negocios mediante entregas
+              eficientes, garantizando puntualidad, atención personalizada y la
+              mejor experiencia logística.
+            </p>
+            <a
+              href="#contact"
+              style="
+                color: var(--color-naranja);
+                font-weight: 600;
+                margin-top: 20px;
+                display: inline-block;
+              "
+              >Hablemos <i class="fas fa-arrow-right"></i
+            ></a>
+          </div>
+          <div class="about-img" data-aos="fade-left">
+            <img
+              src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
+              alt="Repartidor entregando paquete con una sonrisa"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-padding mv-section">
+      <div class="container">
+        <div class="mv-grid">
+          <div class="flip-card mv-height" data-aos="zoom-in">
+            <div class="flip-card-inner">
+              <div
+                class="flip-card-front flip-front-white"
+                style="border-top: 5px solid var(--color-naranja)"
+              >
+                <i class="fas fa-rocket"></i>
+                <h3>Nuestra Misión</h3>
+                <p style="margin-top: 15px; font-size: 0.9rem; color: #999">
+                  (Pasa el mouse)
+                </p>
+              </div>
+              <div class="flip-card-back flip-back-azul">
+                <i class="fas fa-rocket"></i>
+                <h3>Misión</h3>
+                <p>
+                  Brindar a personas y empresas soluciones de envío simples,
+                  rápidas y seguras, respaldadas por procesos confiables y
+                  servicio cercano.
+                </p>
+                <div class="keywords-flip">
+                  Simple – Rápido – Seguro – Confianza – Cercanía
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="flip-card mv-height"
+            data-aos="zoom-in"
+            data-aos-delay="200"
+          >
+            <div class="flip-card-inner">
+              <div
+                class="flip-card-front flip-front-white"
+                style="border-top: 5px solid var(--color-azul)"
+              >
+                <i class="fas fa-eye text-azul"></i>
+                <h3>Nuestra Visión</h3>
+                <p style="margin-top: 15px; font-size: 0.9rem; color: #999">
+                  (Pasa el mouse)
+                </p>
+              </div>
+              <div class="flip-card-back flip-back-naranja">
+                <i class="fas fa-eye"></i>
+                <h3>Visión</h3>
+                <p>
+                  Consolidarnos como la paquetería peruana más confiable,
+                  destacando por la innovación y conectando al Perú con el
+                  mundo.
+                </p>
+                <div class="keywords-flip">
+                  Confianza – Innovación – Expansión – Reconocimiento
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-padding">
+      <div class="container">
+        <h2 class="text-center">Nuestros Valores</h2>
+        <p
+          class="text-center"
+          style="
+            margin-bottom: 50px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+          "
+        >
+          Los pilares fundamentales que guían cada una de nuestras entregas.
+        </p>
+        <div class="values-grid">
+          <div class="value-card" data-aos="fade-up">
+            <i class="fas fa-handshake"></i>
+            <h4>Confianza</h4>
+            <p style="margin-bottom: 0">Cumplimos lo que prometemos.</p>
+          </div>
+          <div class="value-card" data-aos="fade-up" data-aos-delay="100">
+            <i class="fas fa-clock"></i>
+            <h4>Puntualidad</h4>
+            <p style="margin-bottom: 0">Cada entrega es un compromiso.</p>
+          </div>
+          <div class="value-card" data-aos="fade-up" data-aos-delay="200">
+            <i class="fas fa-file-contract"></i>
+            <h4>Transparencia</h4>
+            <p style="margin-bottom: 0">Claridad en tarifas y procesos.</p>
+          </div>
+          <div class="value-card" data-aos="fade-up" data-aos-delay="300">
+            <i class="fas fa-heart"></i>
+            <h4>Cercanía</h4>
+            <p style="margin-bottom: 0">Atención personalizada y humana.</p>
+          </div>
+          <div class="value-card" data-aos="fade-up" data-aos-delay="400">
+            <i class="fas fa-lightbulb"></i>
+            <h4>Innovación</h4>
+            <p style="margin-bottom: 0">Buscamos mejorar cada día.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services" class="section-padding services-section">
+      <div class="container">
+        <div class="text-center" style="margin-bottom: 60px">
+          <span class="text-naranja" style="font-weight: 600"
+            >LO QUE HACEMOS</span
+          >
+          <h2 style="color: white">🛠 Nuestros Servicios</h2>
+        </div>
+        <div class="services-grid">
+          <div class="service-card-glass" data-aos="fade-up">
+            <i class="fas fa-box"></i>
+            <h4>Paquetería Lima & Callao</h4>
+            <p>
+              Envío de paquetes, sobres y documentos en toda Lima Metropolitana
+              y Callao con seguridad.
+            </p>
+          </div>
+
+          <div
+            class="service-card-glass"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            <i class="fas fa-truck-loading"></i>
+            <h4>Recojo a Domicilio</h4>
+            <p>
+              Previa coordinación, recogemos tus envíos en la puerta de tu casa
+              o negocio para tu comodidad.
+            </p>
+          </div>
+
+          <div
+            class="service-card-glass"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
+            <i class="fas fa-store-alt"></i>
+            <h4>Atención Emprendedores</h4>
+            <p>
+              Recojo directo en stands de Gamarra, Centro de Lima y Mercados.
+              Ahorra tiempo valioso.
+            </p>
+          </div>
+
+          <div
+            class="service-card-glass"
+            data-aos="fade-up"
+            data-aos-delay="300"
+          >
+            <i class="fas fa-tachometer-alt"></i>
+            <h4>Entregas Rápidas</h4>
+            <p>
+              Opciones de entrega flexibles: el mismo día o al día siguiente,
+              según el destino.
+            </p>
+          </div>
+
+          <div
+            class="service-card-glass"
+            data-aos="fade-up"
+            data-aos-delay="400"
+          >
+            <i class="fas fa-mobile-alt"></i>
+            <h4>App de Seguimiento</h4>
+            <p>
+              Consulta en tiempo real el estado y ubicación de tu envío a través
+              de nuestra web.
+            </p>
+          </div>
+
+          <div
+            class="service-card-glass"
+            data-aos="fade-up"
+            data-aos-delay="500"
+          >
+            <i class="fas fa-shopping-cart"></i>
+            <h4>Soluciones E-commerce</h4>
+            <p>
+              Logística eficiente diseñada a medida para tiendas online y
+              negocios locales en crecimiento.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section
+      id="coverage"
+      class="section-padding"
+      style="background-color: #fff"
+    >
+      <div class="container" data-aos="zoom-in">
+        <div class="coverage-box">
+          <h2 class="text-center">Cobertura Actual</h2>
+          <p>Operamos con total eficiencia en las siguientes zonas:</p>
+          <ul class="coverage-list">
+            <li><i class="fas fa-map-marker-alt"></i> Lima Metropolitana</li>
+            <li>
+              <i class="fas fa-map-marker-alt"></i> Provincia Constitucional del
+              Callao
+            </li>
+          </ul>
+          <p style="margin-top: 25px; font-weight: 500" class="text-azul">
+            <em>Próximamente expansión a nivel nacional e internacional.</em>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section-padding contact-section">
+      <div class="container">
+        <h2 class="text-center text-azul">Contáctanos</h2>
+        <p class="text-center">
+          Queremos ser tu aliado logístico desde el primer envío.
+        </p>
+
+        <div class="contact-container">
+          <div class="contact-info" data-aos="fade-right">
+            <h3 style="margin-bottom: 30px">Información Directa</h3>
+            <div class="contact-item" style="--i: 1">
+              <i class="fas fa-phone-alt"></i>
+              <div>
+                <strong>Llámanos:</strong>
+                <br />+51 999 999 999
+              </div>
+            </div>
+            <div class="contact-item" style="--i: 2">
+              <i class="fab fa-whatsapp"></i>
+              <div>
+                <strong>Escríbenos al WhatsApp:</strong>
+                <br />Dale clic aquí
+              </div>
+            </div>
+            <div class="contact-item" style="--i: 3">
+              <i class="fas fa-envelope"></i>
+              <div>
+                <strong>Correo Electrónico:</strong>
+                <br />contacto@pakoro.com
+              </div>
+            </div>
+            <div class="contact-item" style="--i: 4">
+              <i class="fas fa-map-pin"></i>
+              <div>
+                <strong>Ubicación:</strong>
+                <br />Lima, Perú
+              </div>
+            </div>
+
+            <div style="margin-top: 40px">
+              <a
+                href="#"
+                style="
+                  color: var(--color-azul);
+                  font-size: 1.5rem;
+                  margin-right: 20px;
+                  transition: 0.3s;
+                "
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+              <a
+                href="#"
+                style="
+                  color: var(--color-azul);
+                  font-size: 1.5rem;
+                  margin-right: 20px;
+                  transition: 0.3s;
+                "
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a
+                href="#"
+                style="
+                  color: var(--color-azul);
+                  font-size: 1.5rem;
+                  transition: 0.3s;
+                "
+                ><i class="fab fa-linkedin-in"></i
+              ></a>
+            </div>
+          </div>
+
+          <div class="contact-form" data-aos="fade-left">
+            <h3 style="margin-bottom: 30px">Envíanos un mensaje</h3>
+            <form>
+              <input type="text" placeholder="Tu Nombre Completo" required />
+              <input
+                type="email"
+                placeholder="Tu Correo Electrónico"
+                required
+              />
+              <input
+                type="text"
+                placeholder="Asunto (Ej: Cotización)"
+                required
+              />
+              <textarea
+                rows="5"
+                placeholder="¿Cómo podemos ayudarte con tus envíos?"
+                required
+              ></textarea>
+              <button type="submit" class="btn btn-primary">
+                Enviar Mensaje
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container" data-aos="fade-in">
+        <div class="logo" style="margin-bottom: 20px">
+          <h2 style="color: var(--color-blanco); margin: 0">PAKORO</h2>
+        </div>
+        <p
+          style="
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            color: rgba(255, 255, 255, 0.8);
+          "
+        >
+          Tus envíos siempre serán Simple, Rápido y Seguro.
+        </p>
+        <div
+          style="
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 30px;
+          "
+        >
+          <p style="font-size: 0.9rem; opacity: 0.6; margin: 0">
+            &copy; 2023 PAKORO. Todos los derechos reservados.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init({
+        duration: 800 /* Duración un poco más rápida */,
+        easing: "ease-in-out",
+        once: true /* La animación de entrada solo ocurre una vez */,
+        offset: 50,
+      });
+    </script>
+  </body>
+</html>

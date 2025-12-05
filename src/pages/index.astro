@@ -10,15 +10,16 @@ import MV from "../sections/MV.astro";
 import Services from "../sections/Services.astro";
 import Values from "../sections/Values.astro";
 import "../styles/global.css";
+import "aos/dist/aos.css";
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
-    <title>Pakoro</title>
+    <title>PAKORO - Simple, Rápido y Seguro</title>
   </head>
   <body
     class="font-poppins m-0 p-0 text-texto overflow-x-hidden leading-[1.6] bg-white"
@@ -48,5 +49,16 @@ import "../styles/global.css";
     </Section>
 
     <Footer />
+
+    <script>
+      import AOS from "aos";
+
+      AOS.init({
+        duration: 800,
+        easing: "ease-in-out",
+        once: true,
+        offset: 50,
+      });
+    </script>
   </body>
 </html>

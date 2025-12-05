@@ -1,10 +1,17 @@
-<header class="bg-white/95 header-shadow sticky top-0 z-10000">
+---
+import Menu from "../icons/Menu.astro";
+import Close from "../icons/Close.astro";
+---
+
+<header class="bg-white/95 header-shadow sticky top-0 z-1000">
   <div class="app-container">
     <nav class="flex justify-between items-center h-20">
       <div>
         <img class="h-[50px] w-auto" src="logo.png" alt="PAKORO Logo" />
       </div>
-      <ul class="flex list-none">
+
+      <!-- Menú Desktop -->
+      <ul class="hidden md:flex list-none">
         <li class="ml-[35px]">
           <a class="item-nav-link" href="#hero">Inicio</a>
         </li>
@@ -18,6 +25,72 @@
           <a class="item-nav-link" href="#contact">Contacto</a>
         </li>
       </ul>
+
+      <!-- Botón Hamburguesa Móvil -->
+      <button
+        id="mobile-menu-btn"
+        class="md:hidden p-2 text-azul focus:outline-none"
+        aria-label="Abrir menú"
+      >
+        <Menu class="size-8" id="menu-icon" />
+        <Close class="size-8 hidden" id="close-icon" />
+      </button>
     </nav>
   </div>
+
+  <!-- Menú Móvil -->
+  <div
+    id="mobile-menu"
+    class="hidden md:hidden bg-white border-t border-gray-100 shadow-lg"
+  >
+    <ul class="flex flex-col list-none py-4">
+      <li>
+        <a
+          class="block px-6 py-3 text-azul font-semibold hover:bg-gray-50 hover:text-naranja transition"
+          href="#hero">Inicio</a
+        >
+      </li>
+      <li>
+        <a
+          class="block px-6 py-3 text-azul font-semibold hover:bg-gray-50 hover:text-naranja transition"
+          href="#about">Nosotros</a
+        >
+      </li>
+      <li>
+        <a
+          class="block px-6 py-3 text-azul font-semibold hover:bg-gray-50 hover:text-naranja transition"
+          href="#services">Servicios</a
+        >
+      </li>
+      <li>
+        <a
+          class="block px-6 py-3 text-azul font-semibold hover:bg-gray-50 hover:text-naranja transition"
+          href="#contact">Contacto</a
+        >
+      </li>
+    </ul>
+  </div>
 </header>
+
+<script>
+  const menuBtn = document.getElementById("mobile-menu-btn");
+  const mobileMenu = document.getElementById("mobile-menu");
+  const menuIcon = document.getElementById("menu-icon");
+  const closeIcon = document.getElementById("close-icon");
+
+  menuBtn?.addEventListener("click", () => {
+    mobileMenu?.classList.toggle("hidden");
+    menuIcon?.classList.toggle("hidden");
+    closeIcon?.classList.toggle("hidden");
+  });
+
+  // Cerrar menú al hacer clic en un enlace
+  const menuLinks = mobileMenu?.querySelectorAll("a");
+  menuLinks?.forEach((link) => {
+    link.addEventListener("click", () => {
+      mobileMenu?.classList.add("hidden");
+      menuIcon?.classList.remove("hidden");
+      closeIcon?.classList.add("hidden");
+    });
+  });
+</script>
