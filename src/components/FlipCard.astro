@@ -9,17 +9,18 @@ const { title, description, color } = Astro.props;
 ---
 
 <div
-  class="perspective-[1000px] cursor-pointer min-h-[280px] md:min-h-[350px] group"
+  class="flip-card perspective-[1000px] cursor-pointer min-h-[280px] md:min-h-[350px] group"
   data-aos="zoom-in"
 >
   <div
-    class="relative size-full text-center transition-transform duration-700 transform-3d rounded-[15px] group-hover:transform-[rotateY(180deg)]"
+    class="flip-card-inner relative size-full text-center transition-transform duration-700 transform-3d rounded-[15px] md:group-hover:transform-[rotateY(180deg)]"
   >
     <div
       class={`absolute size-full backface-hidden [-webkit-backface-visibility: hidden] rounded-[15px] p-10 flex flex-col justify-center items-center shadow-[0_10px_30px_rgba(0,0,0,0.08)] text-azul bg-white border-t-4 ${color === "orange" ? "border-naranja" : "border-azul"}`}
     >
       <slot name="front-icon" />
       <h3 class="text-title text-xl">{title}</h3>
+      <p class="text-sm text-gray-500 mt-2 md:hidden">Toca para ver más</p>
     </div>
     <div
       class={`absolute size-full backface-hidden [-webkit-backface-visibility: hidden] rounded-[15px] p-10 flex flex-col justify-center items-center shadow-[0_10px_30px_rgba(0,0,0,0.08)] rotate-y-180 text-white ${color === "orange" ? "bg-azul" : "bg-naranja"}`}
@@ -30,3 +31,25 @@ const { title, description, color } = Astro.props;
     </div>
   </div>
 </div>
+
+<style>
+  .flip-card.flipped .flip-card-inner {
+    transform: rotateY(180deg);
+  }
+</style>
+
+<script>
+  // Detectar si es dispositivo táctil (sin hover)
+  function isTouchDevice() {
+    return "ontouchstart" in window || navigator.maxTouchPoints > 0;
+  }
+
+  // Solo agregar funcionalidad de click en dispositivos táctiles
+  if (isTouchDevice()) {
+    document.querySelectorAll(".flip-card").forEach((card) => {
+      card.addEventListener("click", () => {
+        card.classList.toggle("flipped");
+      });
+    });
+  }
+</script>
