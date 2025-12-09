@@ -47,38 +47,95 @@ import WhatsApp from "../icons/WhatsApp.astro";
 
     <div class="flex-1 m-5" data-aos="fade-left">
       <h3 class="mb-8 text-azul font-bold text-xl">Envíanos un mensaje</h3>
-      <form>
+      <form id="contact-form">
         <input
           type="text"
+          name="name"
           placeholder="Tu Nombre Completo"
           required
           class="text-sm md:text-base w-full p-[18px] mb-[20px] border-2 border-[#eee] rounded-[12px] font-poppins bg-[#fcfcfc] transition duration-300 focus:border-naranja focus:outline-none focus:bg-white"
         />
         <input
           type="email"
+          name="email"
           placeholder="Tu Correo Electrónico"
           required
           class="text-sm md:text-base w-full p-[18px] mb-[20px] border-2 border-[#eee] rounded-[12px] font-poppins bg-[#fcfcfc] transition duration-300 focus:border-naranja focus:outline-none focus:bg-white"
         />
         <input
           type="text"
+          name="subject"
           placeholder="Asunto (Ej: Cotización)"
           required
           class="text-sm md:text-base w-full p-[18px] mb-[20px] border-2 border-[#eee] rounded-[12px] font-poppins bg-[#fcfcfc] transition duration-300 focus:border-naranja focus:outline-none focus:bg-white"
         />
         <textarea
           rows="5"
+          name="message"
           placeholder="¿Cómo podemos ayudarte con tus envíos?"
           required
           class="text-sm md:text-base w-full p-[18px] mb-[20px] border-2 border-[#eee] rounded-[12px] font-poppins bg-[#fcfcfc] transition duration-300 focus:border-naranja focus:outline-none focus:bg-white"
         ></textarea>
         <button
+          id="send-contact"
           type="submit"
           class="btn btn-primary w-full border-none text-white"
         >
           Enviar Mensaje
         </button>
       </form>
+      <div id="form-message" class="mt-4 text-center hidden"></div>
+
+      <script>
+        const form = document.getElementById("contact-form") as HTMLFormElement;
+        const messageDiv = document.getElementById("form-message");
+        const buttonForm = document.getElementById(
+          "send-contact"
+        ) as HTMLButtonElement;
+
+        if (form && messageDiv) {
+          form.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const formData = new FormData(form);
+
+            const originalBtnText = buttonForm.innerText;
+
+            buttonForm.disabled = true;
+            buttonForm.innerText = "Enviando...";
+            messageDiv.classList.add("opacity-400");
+            // messageDiv.className = "mt-4 text-center hidden"; // Reset classes
+
+            try {
+              const response = await fetch("/api/send-email", {
+                method: "POST",
+                body: formData,
+              });
+
+              const data = await response.json();
+
+              if (response.ok) {
+                messageDiv.innerText = data.message;
+                messageDiv.classList.remove("hidden");
+                messageDiv.classList.add("text-green-600", "font-bold");
+                form.reset();
+              } else {
+                throw new Error(data.message || "Error al enviar el mensaje");
+              }
+            } catch (error) {
+              console.error(error);
+              messageDiv.innerText =
+                error instanceof Error
+                  ? error.message
+                  : "Ocurrió un error inesperado";
+              messageDiv.classList.remove("hidden");
+              messageDiv.classList.add("text-red-600", "font-bold");
+            } finally {
+              submitBtn.disabled = false;
+              submitBtn.innerText = originalBtnText;
+            }
+          });
+        }
+      </script>
     </div>
   </div>
 </div>

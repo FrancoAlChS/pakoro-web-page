@@ -9,12 +9,15 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/node": "^9.5.1",
     "@tailwindcss/vite": "^4.1.17",
     "aos": "^2.3.4",
     "astro": "^5.16.4",
+    "nodemailer": "^7.0.11",
     "tailwindcss": "^4.1.17"
   },
   "devDependencies": {
-    "@types/aos": "^3.0.7"
+    "@types/aos": "^3.0.7",
+    "@types/nodemailer": "^7.0.4"
   }
 }
