@@ -16,26 +16,26 @@ import WhatsApp from "../icons/WhatsApp.astro";
   </p>
 
   <div class="contact-container">
-    <div class="flex-1 min-w-[300px] m-5" data-aos="fade-right">
+    <div class="flex-1 m-5" data-aos="fade-right">
       <h3 class="mb-8 text-azul font-bold text-xl">Información Directa</h3>
 
       <ContactIcon title="Llámanos:" value="+51 965 167 140">
-        <Cellphone class="size-6 text-white" />
+        <Cellphone class="md:size-6 size-4 text-white" />
       </ContactIcon>
 
       <ContactIcon title="Escríbenos al WhatsApp:" value="+51 965 167 140">
-        <WhatsApp class="size-6 text-white" />
+        <WhatsApp class="md:size-6 size-4 text-white" />
       </ContactIcon>
 
       <ContactIcon
         title="Correo Electrónico:"
         value="servicios.pakoro@gmail.com"
       >
-        <Mail class="size-6 text-white" />
+        <Mail class="md:size-6 size-4 text-white" />
       </ContactIcon>
 
       <ContactIcon title="Ubicación:" value="Lima, Perú">
-        <Location class="size-6 text-white" />
+        <Location class="md:size-6 size-4 text-white" />
       </ContactIcon>
 
       <div class="mt-10 flex gap-5">
@@ -45,32 +45,32 @@ import WhatsApp from "../icons/WhatsApp.astro";
       </div>
     </div>
 
-    <div class="flex-1 min-w-[300px] m-5" data-aos="fade-left">
+    <div class="flex-1 m-5" data-aos="fade-left">
       <h3 class="mb-8 text-azul font-bold text-xl">Envíanos un mensaje</h3>
       <form>
         <input
           type="text"
           placeholder="Tu Nombre Completo"
           required
-          class="w-full p-[18px] mb-[20px] border-2 border-[#eee] rounded-[12px] font-poppins bg-[#fcfcfc] transition duration-300 focus:border-naranja focus:outline-none focus:bg-white"
+          class="text-sm md:text-base w-full p-[18px] mb-[20px] border-2 border-[#eee] rounded-[12px] font-poppins bg-[#fcfcfc] transition duration-300 focus:border-naranja focus:outline-none focus:bg-white"
         />
         <input
           type="email"
           placeholder="Tu Correo Electrónico"
           required
-          class="w-full p-[18px] mb-[20px] border-2 border-[#eee] rounded-[12px] font-poppins bg-[#fcfcfc] transition duration-300 focus:border-naranja focus:outline-none focus:bg-white"
+          class="text-sm md:text-base w-full p-[18px] mb-[20px] border-2 border-[#eee] rounded-[12px] font-poppins bg-[#fcfcfc] transition duration-300 focus:border-naranja focus:outline-none focus:bg-white"
         />
         <input
           type="text"
           placeholder="Asunto (Ej: Cotización)"
           required
-          class="w-full p-[18px] mb-[20px] border-2 border-[#eee] rounded-[12px] font-poppins bg-[#fcfcfc] transition duration-300 focus:border-naranja focus:outline-none focus:bg-white"
+          class="text-sm md:text-base w-full p-[18px] mb-[20px] border-2 border-[#eee] rounded-[12px] font-poppins bg-[#fcfcfc] transition duration-300 focus:border-naranja focus:outline-none focus:bg-white"
         />
         <textarea
           rows="5"
           placeholder="¿Cómo podemos ayudarte con tus envíos?"
           required
-          class="w-full p-[18px] mb-[20px] border-2 border-[#eee] rounded-[12px] font-poppins bg-[#fcfcfc] transition duration-300 focus:border-naranja focus:outline-none focus:bg-white"
+          class="text-sm md:text-base w-full p-[18px] mb-[20px] border-2 border-[#eee] rounded-[12px] font-poppins bg-[#fcfcfc] transition duration-300 focus:border-naranja focus:outline-none focus:bg-white"
         ></textarea>
         <button
           type="submit"

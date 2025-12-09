@@ -9,13 +9,13 @@ const { title, value } = Astro.props;
 
 <div class="flex items-center mb-5">
   <span
-    class="size-[55px] bg-naranja flex justify-center items-center rounded-[15px] mr-5 contact-icon-animation"
+    class="md:size-[55px] size-[40px] bg-naranja flex justify-center items-center rounded-[15px] mr-2 md:mr-5 contact-icon-animation"
   >
     <slot />
   </span>
 
   <div>
-    <strong>{title}</strong>
-    <br />{value}
+    <strong class="text-sm md:text-base">{title}</strong>
+    <p class="text-sm md:text-base">{value}</p>
   </div>
 </div>
